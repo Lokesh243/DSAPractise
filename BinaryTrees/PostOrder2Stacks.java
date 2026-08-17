@@ -16,37 +16,27 @@ public class PostOrder2Stacks {
 
     static List<Integer> postorderTraversal(TreeNode root) {
         List<Integer> ans = new ArrayList<>();
-
         if (root == null) {
             return ans;
         }
-
         Stack<TreeNode> s1 = new Stack<>();
         Stack<TreeNode> s2 = new Stack<>();
-
         s1.push(root);
-
         while (!s1.isEmpty()) {
             TreeNode curr = s1.pop();
-
             s2.push(curr);
-
             if (curr.left != null) {
                 s1.push(curr.left);
             }
-
             if (curr.right != null) {
                 s1.push(curr.right);
             }
         }
-
         while (!s2.isEmpty()) {
             ans.add(s2.pop().val);
         }
-
         return ans;
     }
-
     static class TreeNode {
         int val;
         TreeNode left;
